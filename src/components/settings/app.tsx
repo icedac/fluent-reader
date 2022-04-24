@@ -55,6 +55,7 @@ class AppTab extends React.Component<AppTabProps, AppTabState> {
         }
         this.getItemSize()
         this.getCacheSize()
+        this.setFakeUserAgent()
     }
 
     getCacheSize = () => {
@@ -66,6 +67,10 @@ class AppTab extends React.Component<AppTabProps, AppTabState> {
         calculateItemSize().then(size => {
             this.setState({ itemSize: byteToMB(size) })
         })
+    }
+
+    setFakeUserAgent = () => {
+        window.utils.setFakeUserAgent().then( () => {} )
     }
 
     clearCache = () => {

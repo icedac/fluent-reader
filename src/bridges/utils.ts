@@ -63,6 +63,10 @@ const utilsBridge = {
         return await ipcRenderer.invoke("get-cache")
     },
 
+    setFakeUserAgent: async () => {
+        await ipcRenderer.invoke("set-fake-user-agent")
+    },
+
     clearCache: async () => {
         await ipcRenderer.invoke("clear-cache")
     },
