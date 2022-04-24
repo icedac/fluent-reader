@@ -68,6 +68,10 @@ class AppTab extends React.Component<AppTabProps, AppTabState> {
         })
     }
 
+    setFakeUserAgent = () => {
+        window.utils.setFakeUserAgent().then( () => {} )
+    }
+
     clearCache = () => {
         window.utils.clearCache().then(() => {
             this.getCacheSize()

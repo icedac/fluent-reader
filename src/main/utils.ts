@@ -120,6 +120,14 @@ export function setUtilsListeners(manager: WindowManager) {
         }
     )
 
+    ipcMain.handle("set-fake-user-agent", async () => {
+        // change default user agent some rss service deny default agent
+        session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+            details.requestHeaders['User-Agent'] = 'curl/7.68.0';
+            callback({ cancel: false, requestHeaders: details.requestHeaders });
+        });  
+    })
+
     ipcMain.handle("get-cache", async () => {
         return await session.defaultSession.getCacheSize()
     })

@@ -385,6 +385,7 @@ export function initIntl(): AppThunk<Promise<void>> {
             })
             .then(() => {
                 dispatch(initIntlDone(locale))
+                window.utils.setFakeUserAgent().then( () => {} );
             })
     }
 }
